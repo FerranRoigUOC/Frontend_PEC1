@@ -3,6 +3,9 @@ const username = document.getElementById('username');
 const email = document.getElementById('email');
 const password = document.getElementById('password');
 const password2 = document.getElementById('password2');
+const age = document.getElementById('age');
+const url = document.getElementById('url');
+
 
 function showError(input, message) {
     const formControl = input.parentElement;
@@ -51,15 +54,40 @@ function checkPasswordMatch(input1, input2){
     }
 }
 
+function checkAge(ageInput){
+    if(ageInput.value < 0){
+        showError(ageInput, `${getFieldName(ageInput)} must be at least 0`);
+    } else if(ageInput.value > 999) {
+        showError(ageInput, `${getFieldName(ageInput)} must be less than 999`);
+    }
+}
+
+function checkAge(ageInput){
+    if(ageInput.value < 0){
+        showError(ageInput, `${getFieldName(ageInput)} must be at least 0`);
+    } else if(ageInput.value > 999) {
+        showError(ageInput, `${getFieldName(ageInput)} must be less than 999`);
+    }
+}
+
+function checkUrl(urlInput){
+    var res = urlInput.value.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g);
+    if(res === null){
+        showError(urlInput, `Enter a valid url`);
+    }
+}
+
 function getFieldName(input){
     return input.id.charAt(0).toUpperCase() + input.id.slice(1);
 }
 
 form.addEventListener('submit', function(e) {
     e.preventDefault();
-    checkRequired([username, email, password, password2]);
+    checkRequired([username, email, password, password2, age, url]);
     checkLength(username, 3, 15);
     checkLength(password, 6, 25);
     checkEmail(email);
     checkPasswordMatch(password, password2);
+    checkAge(age);
+    checkUrl(url);
 });
