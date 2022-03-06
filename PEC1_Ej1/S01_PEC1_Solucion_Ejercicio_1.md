@@ -51,4 +51,4 @@ git init - para crear un nuevo repositorio
 git status - para comprobar el estado del repositorio
 git log - para poder ver todos los cambios que hemos hecho
 - Cita y explica brevemente las características más definitorias de WebPack.
-//TODO
+Eliminación de recursos no utilizados, control absoluto sobre cómo procesas los recursos, muy rápido y rápido desarrollando.
